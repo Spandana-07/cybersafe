@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Detector - CyberSafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔐 CyberSafe</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/password-checker">Password Checker</a></li>
+                <li><a href="/phishing-checker">Phishing Detector</a></li>
+                <li><a href="/tips">Security Tips</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if session.user %}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login" class="btn-login">Login</a></li>
+                    <li><a href="/register" class="btn-register">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <section class="tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <h1>🌐 Phishing URL Detector</h1>
+                <p>Check if a website link is safe or suspicious</p>
+            </div>
+
+            <div class="tool-container">
+                <div class="phishing-checker">
+                    <div class="input-group">
+                        <label for="url">Enter Website URL:</label>
+                        <div class="url-input-wrapper">
+                            <input 
+                                type="text" 
+                                id="url" 
+                                placeholder="https://example.com" 
+                                class="url-input"
+                            >
+                            <button class="check-btn" id="checkUrlBtn">Check URL</button>
+                        </div>
+                    </div>
+
+                    <div class="loading" id="loadingSpinner" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Analyzing URL...</p>
+                    </div>
+
+                    <div class="result-container" id="resultContainer" style="display: none;">
+                        <div class="result-card" id="resultCard">
+                            <div class="result-icon" id="resultIcon"></div>
+                            <h2 id="resultTitle"></h2>
+                            <p id="resultMessage"></p>
+                            <div class="result-details" id="resultDetails"></div>
+                        </div>
+                    </div>
+
+                    <div class="phishing-indicators">
+                        <h3>Common Phishing Indicators:</h3>
+                        <div class="indicators-grid">
+                            <div class="indicator">
+                                <h4>⚠️ Misspelled Domains</h4>
+                                <p>e.g., "gg00gle.com" instead of "google.com"</p>
+                            </div>
+                            <div class="indicator">
+                                <h4>⚠️ Suspicious Extensions</h4>
+                                <p>URLs with IP addresses or unusual TLDs</p>
+                            </div>
+                            <div class="indicator">
+                                <h4>⚠️ Secure Connection</h4>
+                                <p>Check for HTTPS and valid SSL certificate</p>
+                            </div>
+                            <div class="indicator">
+                                <h4>⚠️ Shortened URLs</h4>
+                                <p>Links like bit.ly that hide actual destination</p>
+                            </div>
+                            <div class="indicator">
+                                <h4>⚠️ Urgency Tactics</h4>
+                                <p>Emails claiming immediate action required</p>
+                            </div>
+                            <div class="indicator">
+                                <h4>⚠️ Suspicious Emails</h4>
+                                <p>Requests for password or personal info</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phishing-tips">
+                        <h3>🛡️ How to Avoid Phishing:</h3>
+                        <ul>
+                            <li>Never click links in unsolicited emails - go directly to official website</li>
+                            <li>Check sender's email address carefully</li>
+                            <li>Look for HTTPS and padlock icon in address bar</li>
+                            <li>Hover over links to see actual URL before clicking</li>
+                            <li>Be suspicious of urgent requests or threats</li>
+                            <li>Contact company directly if you're unsure about a link</li>
+                            <li>Legitimate companies never ask for passwords via email</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CyberSafe</h4>
+                    <p>Protecting you in the digital world</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tips">Tips</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/password-checker">Password Checker</a></li>
+                        <li><a href="/phishing-checker">Phishing Detector</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberSafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

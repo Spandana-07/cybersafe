@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - CyberSafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="auth-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔐 CyberSafe</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/password-checker">Password Checker</a></li>
+                <li><a href="/phishing-checker">Phishing Detector</a></li>
+                <li><a href="/tips">Security Tips</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Create Your Account</h1>
+                    <p>Join CyberSafe today and start protecting yourself</p>
+                </div>
+
+                {% if error_message %}
+                    <div class="alert alert-error">{{ error_message }}</div>
+                {% endif %}
+
+                <form method="POST" action="/register" class="auth-form" id="registerForm">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="fullname" 
+                            name="fullname" 
+                            required 
+                            placeholder="Your full name"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="your@email.com"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                required 
+                                placeholder="Create a strong password"
+                                minlength="8"
+                            >
+                            <button type="button" class="toggle-password" id="togglePassword">👁️</button>
+                        </div>
+                        <small>Minimum 8 characters, include uppercase, lowercase, numbers, and symbols</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="confirm_password" 
+                                name="confirm_password" 
+                                required 
+                                placeholder="Confirm your password"
+                            >
+                            <button type="button" class="toggle-password" id="toggleConfirmPassword">👁️</button>
+                        </div>
+                    </div>
+
+                    <div class="password-strength" id="passwordStrength"></div>
+
+                    <div class="form-group checkbox">
+                        <input 
+                            type="checkbox" 
+                            id="terms" 
+                            name="terms" 
+                            required
+                        >
+                        <label for="terms">I agree to the Terms of Service and Privacy Policy</label>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input 
+                            type="checkbox" 
+                            id="newsletter" 
+                            name="newsletter"
+                        >
+                        <label for="newsletter">Subscribe to security tips and updates</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="/login">Login here</a></p>
+                </div>
+
+                <div class="security-note">
+                    <h4>🔒 Your Security is Important</h4>
+                    <p>Your password is encrypted and stored securely. We follow industry-standard security practices to protect your data.</p>
+                </div>
+            </div>
+
+            <div class="auth-info">
+                <h2>What You Get</h2>
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="icon">✓</span>
+                        <span>Access to all security tools</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">✓</span>
+                        <span>Personalized security dashboard</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">✓</span>
+                        <span>Save your assessments</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">✓</span>
+                        <span>Security recommendations</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">✓</span>
+                        <span>Always free, no hidden costs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberSafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

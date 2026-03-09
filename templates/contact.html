@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - CyberSafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔐 CyberSafe</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/password-checker">Password Checker</a></li>
+                <li><a href="/phishing-checker">Phishing Detector</a></li>
+                <li><a href="/tips">Security Tips</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if session.user %}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login" class="btn-login">Login</a></li>
+                    <li><a href="/register" class="btn-register">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <h1>📩 Contact Us</h1>
+                <p>Have questions or feedback? We'd love to hear from you!</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-form-wrapper">
+                    <form method="POST" action="/contact" class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required placeholder="What is this about?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Your message here..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category">
+                                <option value="general">General Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="bug">Bug Report</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+                    </form>
+
+                    {% if success_message %}
+                        <div class="alert alert-success">{{ success_message }}</div>
+                    {% endif %}
+                    {% if error_message %}
+                        <div class="alert alert-error">{{ error_message }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    
+                    <div class="info-card">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:info@cybersafe.com">info@cybersafe.com</a></p>
+                        <p class="info-subtitle">We typically respond within 24 hours</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📞 Support</h3>
+                        <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                        <p class="info-subtitle">Monday - Friday, 9AM - 5PM EST</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🌍 Social Media</h3>
+                        <div class="social-links">
+                            <a href="https://twitter.com" class="social-link" target="_blank">Twitter</a>
+                            <a href="https://facebook.com" class="social-link" target="_blank">Facebook</a>
+                            <a href="https://linkedin.com" class="social-link" target="_blank">LinkedIn</a>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🔒 Report Security Issue</h3>
+                        <p>Found a security vulnerability? Please report it responsibly to:</p>
+                        <p><a href="mailto:security@cybersafe.com" class="social-link">security@cybersafe.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Is my password saved when I use the Password Checker?</h3>
+                    <p>No, your passwords are checked locally in your browser and never sent to our servers. Your privacy is our priority.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How accurate is the Phishing URL Detector?</h3>
+                    <p>Our detector uses multiple heuristics to identify suspicious URLs. However, for absolute confirmation, check the official website directly or contact the organization.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do I need to create an account to use the tools?</h3>
+                    <p>No, our basic security tools are free and available to everyone. Registration is optional for saving your security assessments.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How often is the security information updated?</h3>
+                    <p>We update our security tips and threat information regularly to reflect the latest cyber threats and best practices.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I use CyberSafe for my organization?</h3>
+                    <p>Yes! We offer enterprise solutions for organizations. Please contact us at info@cybersafe.com for more details.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What browsers do you support?</h3>
+                    <p>CyberSafe works on all modern browsers including Chrome, Firefox, Safari, and Edge. Please keep your browser updated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CyberSafe</h4>
+                    <p>Protecting you in the digital world</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tips">Tips</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/password-checker">Password Checker</a></li>
+                        <li><a href="/phishing-checker">Phishing Detector</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberSafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe - Cybersecurity Awareness Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔐 CyberSafe</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/password-checker">Password Checker</a></li>
+                <li><a href="/phishing-checker">Phishing Detector</a></li>
+                <li><a href="/tips">Security Tips</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if session.user %}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login" class="btn-login">Login</a></li>
+                    <li><a href="/register" class="btn-register">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to CyberSafe</h1>
+            <p>Your Shield Against Cyber Threats</p>
+            <p class="hero-subtitle">Learn cybersecurity and use real security tools to protect yourself online</p>
+            <div class="hero-buttons">
+                <a href="/password-checker" class="btn btn-primary">Check Password Strength</a>
+                <a href="/phishing-checker" class="btn btn-secondary">Detect Phishing URLs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <h2>Cyber Attack Statistics 2024</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>4.3B</h3>
+                    <p>Data Records Breached</p>
+                </div>
+                <div class="stat-card">
+                    <h3>62%</h3>
+                    <p>Emails are Phishing Attacks</p>
+                </div>
+                <div class="stat-card">
+                    <h3>5.4M</h3>
+                    <p>Cyber Attacks Daily</p>
+                </div>
+                <div class="stat-card">
+                    <h3>$6.9T</h3>
+                    <p>Global Cybercrime Cost</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Cybersecurity Section -->
+    <section class="why-security">
+        <div class="container">
+            <h2>Why Cybersecurity Matters</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3>🎯 Personal Data Protection</h3>
+                    <p>Protect your sensitive information from hackers and identity theft. Your data is valuable!</p>
+                </div>
+                <div class="card">
+                    <h3>💰 Financial Security</h3>
+                    <p>Prevent unauthorized access to your bank accounts and financial information.</p>
+                </div>
+                <div class="card">
+                    <h3>🏢 Business Protection</h3>
+                    <p>Safeguard company secrets and maintain customer trust with strong security practices.</p>
+                </div>
+                <div class="card">
+                    <h3>🌍 Global Threat Response</h3>
+                    <p>Stay informed about emerging cyber threats and latest security trends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Our Tools & Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔑</div>
+                    <h3>Password Strength Analyzer</h3>
+                    <p>Check if your password is strong enough to resist cyber attacks</p>
+                    <a href="/password-checker" class="feature-btn">Try Tool →</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Phishing URL Detector</h3>
+                    <p>Identify suspicious and malicious links before clicking</p>
+                    <a href="/phishing-checker" class="feature-btn">Try Tool →</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡</div>
+                    <h3>Security Tips Hub</h3>
+                    <p>Learn essential cybersecurity best practices and stay safe</p>
+                    <a href="/tips" class="feature-btn">Learn More →</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Secure Account</h3>
+                    <p>Create an account to save your security assessments</p>
+                    <a href="/register" class="feature-btn">Join Now →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Take Control of Your Digital Safety Today</h2>
+            <p>Don't wait for a cyber attack to happen. Start protecting yourself now!</p>
+            {% if not session.user %}
+                <a href="/register" class="btn btn-large">Create Your Account Now</a>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CyberSafe</h4>
+                    <p>Protecting you in the digital world</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tips">Tips</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/password-checker">Password Checker</a></li>
+                        <li><a href="/phishing-checker">Phishing Detector</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberSafe. All rights reserved. | Stay Safe Online! 🔐</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

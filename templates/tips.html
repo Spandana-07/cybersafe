@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Tips - CyberSafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔐 CyberSafe</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/password-checker">Password Checker</a></li>
+                <li><a href="/phishing-checker">Phishing Detector</a></li>
+                <li><a href="/tips">Security Tips</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if session.user %}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login" class="btn-login">Login</a></li>
+                    <li><a href="/register" class="btn-register">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <section class="tips-section">
+        <div class="container">
+            <h1>🛡️ Cybersecurity Tips & Best Practices</h1>
+            <p class="section-subtitle">Learn how to protect yourself in the digital world</p>
+
+            <!-- Essential Tips -->
+            <div class="tips-content">
+                <h2>Essential Cybersecurity Practices</h2>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">🔑</div>
+                        <h3>1. Use Strong Passwords</h3>
+                        <p>Create unique, complex passwords with:
+                            <ul>
+                                <li>At least 12 characters</li>
+                                <li>Mix of uppercase and lowercase</li>
+                                <li>Numbers and special characters</li>
+                                <li>Avoid personal information</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🔐</div>
+                        <h3>2. Enable Two-Factor Authentication (2FA)</h3>
+                        <p>Add an extra security layer to your accounts:
+                            <ul>
+                                <li>Use authenticator apps (Google, Microsoft Auth)</li>
+                                <li>Backup codes should be saved securely</li>
+                                <li>Don't disable even if inconvenient</li>
+                                <li>Available on most major platforms</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🔄</div>
+                        <h3>3. Keep Software Updated</h3>
+                        <p>Software updates patch security vulnerabilities:
+                            <ul>
+                                <li>Update OS regularly</li>
+                                <li>Install security patches immediately</li>
+                                <li>Enable automatic updates when possible</li>
+                                <li>Update all installed applications</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">⚠️</div>
+                        <h3>4. Avoid Suspicious Links</h3>
+                        <p>Be cautious when clicking links:
+                            <ul>
+                                <li>Don't click links in unsolicited emails</li>
+                                <li>Hover over links to see actual URL</li>
+                                <li>Verify sender's email address</li>
+                                <li>Go directly to official websites</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🛡️</div>
+                        <h3>5. Use Antivirus Software</h3>
+                        <p>Protect your device from malware:
+                            <ul>
+                                <li>Install reputable antivirus software</li>
+                                <li>Keep virus definitions updated</li>
+                                <li>Run regular scans</li>
+                                <li>Use built-in security tools</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">📱</div>
+                        <h3>6. Secure Your Devices</h3>
+                        <p>Protect all your gadgets:
+                            <ul>
+                                <li>Use strong PINs/passwords for devices</li>
+                                <li>Enable biometric security</li>
+                                <li>Use device encryption</li>
+                                <li>Enable remote wipe capability</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">👤</div>
+                        <h3>7. Manage Personal Information</h3>
+                        <p>Protect your identity online:
+                            <ul>
+                                <li>Limit social media visibility</li>
+                                <li>Don't share sensitive information publicly</li>
+                                <li>Be careful with email addresses</li>
+                                <li>Monitor accounts for suspicious activity</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🌐</div>
+                        <h3>8. Use Secure WiFi</h3>
+                        <p>Protect your internet connection:
+                            <ul>
+                                <li>Use password-protected networks</li>
+                                <li>Avoid public WiFi for sensitive tasks</li>
+                                <li>Use VPN on public networks</li>
+                                <li>Enable network encryption (WPA3)</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">📧</div>
+                        <h3>9. Watch Out for Phishing</h3>
+                        <p>Identify and avoid phishing attacks:
+                            <ul>
+                                <li>Check sender's email carefully</li>
+                                <li>Look for spelling/grammar errors</li>
+                                <li>Don't provide info via email</li>
+                                <li>Report suspicious emails</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">💾</div>
+                        <h3>10. Regular Backups</h3>
+                        <p>Prepare for data loss scenarios:
+                            <ul>
+                                <li>Backup important files regularly</li>
+                                <li>Use cloud storage services</li>
+                                <li>Keep offline backups</li>
+                                <li>Test backups periodically</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🔒</div>
+                        <h3>11. Password Manager</h3>
+                        <p>Use tools to manage passwords securely:
+                            <ul>
+                                <li>Use password managers (Bitwarden, 1Password)</li>
+                                <li>Generate strong random passwords</li>
+                                <li>Never reuse passwords</li>
+                                <li>Store credentials securely</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">📚</div>
+                        <h3>12. Stay Informed</h3>
+                        <p>Keep up with security trends:
+                            <ul>
+                                <li>Follow cybersecurity news</li>
+                                <li>Learn about new threats</li>
+                                <li>Join security communities</li>
+                                <li>Attend security awareness training</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warning Signs Section -->
+            <div class="tips-content warning-section">
+                <h2>⚠️ Warning Signs of Cyber Attacks</h2>
+                <div class="warning-grid">
+                    <div class="warning-card">
+                        <h3>Account Compromise</h3>
+                        <ul>
+                            <li>Unusual login activity</li>
+                            <li>Password reset notifications you didn't request</li>
+                            <li>Missing or modified data</li>
+                            <li>Unexpected emails from your account</li>
+                        </ul>
+                    </div>
+                    <div class="warning-card">
+                        <h3>Malware Symptoms</h3>
+                        <ul>
+                            <li>Slow device performance</li>
+                            <li>Unexpected pop-ups or ads</li>
+                            <li>Changed browser homepage</li>
+                            <li>Unfamiliar toolbars or extensions</li>
+                        </ul>
+                    </div>
+                    <div class="warning-card">
+                        <h3>Phishing Signs</h3>
+                        <ul>
+                            <li>Suspicious sender addresses</li>
+                            <li>Requests for personal information</li>
+                            <li>Urgent action required messages</li>
+                            <li>Links don't match sender claims</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CyberSafe</h4>
+                    <p>Protecting you in the digital world</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tips">Tips</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/password-checker">Password Checker</a></li>
+                        <li><a href="/phishing-checker">Phishing Detector</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberSafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

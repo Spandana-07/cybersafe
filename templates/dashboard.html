@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CyberSafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔐 CyberSafe</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/password-checker">Password Checker</a></li>
+                <li><a href="/phishing-checker">Phishing Detector</a></li>
+                <li><a href="/tips">Security Tips</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/logout" class="btn-logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Welcome, {{ user.fullname }}!</h1>
+                <p>Your personal cybersecurity dashboard</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- User Profile Card -->
+                <div class="dashboard-card profile-card">
+                    <h2>👤 Your Profile</h2>
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> {{ user.fullname }}</p>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                        <p><strong>Member Since:</strong> {{ user.created_at }}</p>
+                        <p><strong>Account Status:</strong> <span class="status-active">Active</span></p>
+                    </div>
+                    <a href="/edit-profile" class="btn btn-secondary">Edit Profile</a>
+                </div>
+
+                <!-- Security Score Card -->
+                <div class="dashboard-card security-score-card">
+                    <h2>🛡️ Security Score</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span class="score-number" id="securityScore">75</span>
+                            <span class="score-label">/100</span>
+                        </div>
+                        <div class="score-description">
+                            <p>Great job! Keep improving your security practices.</p>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Stats -->
+                <div class="dashboard-card activity-card">
+                    <h2>📊 Your Activity</h2>
+                    <div class="stats-list">
+                        <div class="stat-item">
+                            <span class="stat-label">Passwords Checked:</span>
+                            <span class="stat-value">12</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">URLs Analyzed:</span>
+                            <span class="stat-value">8</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Last Check:</span>
+                            <span class="stat-value">Today</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dashboard-card quick-actions-card">
+                    <h2>⚡ Quick Actions</h2>
+                    <div class="actions-grid">
+                        <a href="/password-checker" class="action-btn">
+                            <span class="action-icon">🔑</span>
+                            <span>Check Password</span>
+                        </a>
+                        <a href="/phishing-checker" class="action-btn">
+                            <span class="action-icon">🌐</span>
+                            <span>Detect Phishing</span>
+                        </a>
+                        <a href="/tips" class="action-btn">
+                            <span class="action-icon">📚</span>
+                            <span>Security Tips</span>
+                        </a>
+                        <a href="/contact" class="action-btn">
+                            <span class="action-icon">📧</span>
+                            <span>Send Feedback</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Checks -->
+                <div class="dashboard-card recent-checks-card">
+                    <h2>📋 Recent Security Checks</h2>
+                    <div class="checks-list">
+                        <div class="check-item">
+                            <span class="check-icon">🔑</span>
+                            <div class="check-details">
+                                <p class="check-title">Password Check</p>
+                                <p class="check-result">Strong Password - 2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon">🌐</span>
+                            <div class="check-details">
+                                <p class="check-title">URL Analysis</p>
+                                <p class="check-result">Safe - 1 day ago</p>
+                            </div>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon">🔑</span>
+                            <div class="check-details">
+                                <p class="check-title">Password Check</p>
+                                <p class="check-result">Medium Strength - 3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="view-more">View All Checks →</a>
+                </div>
+
+                <!-- Security Tips -->
+                <div class="dashboard-card tips-card">
+                    <h2>💡 Today's Security Tip</h2>
+                    <div class="tip-content">
+                        <h3>Enable Two-Factor Authentication</h3>
+                        <p>Two-factor authentication (2FA) adds an extra layer of security to your accounts. Even if someone gets your password, they can't access your account without the second factor.</p>
+                        <a href="/tips" class="btn btn-secondary btn-small">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Account Settings -->
+                <div class="dashboard-card settings-card">
+                    <h2>⚙️ Settings</h2>
+                    <div class="settings-list">
+                        <a href="#" class="settings-item">
+                            <span>Change Password</span>
+                            <span class="arrow">→</span>
+                        </a>
+                        <a href="#" class="settings-item">
+                            <span>Two-Factor Authentication</span>
+                            <span class="arrow">→</span>
+                        </a>
+                        <a href="#" class="settings-item">
+                            <span>Privacy Settings</span>
+                            <span class="arrow">→</span>
+                        </a>
+                        <a href="#" class="settings-item">
+                            <span>Notification Preferences</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CyberSafe</h4>
+                    <p>Protecting you in the digital world</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tips">Tips</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/password-checker">Password Checker</a></li>
+                        <li><a href="/phishing-checker">Phishing Detector</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberSafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
